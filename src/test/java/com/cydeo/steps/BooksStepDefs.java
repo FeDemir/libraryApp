@@ -9,6 +9,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 import java.util.List;
+import java.util.Map;
 
 public class BooksStepDefs {
     BookPage bookPage=new BookPage();
@@ -61,6 +62,47 @@ public class BooksStepDefs {
 
         // Assertions
         Assert.assertEquals(expectedCategoryList, actualCategoryList);
+
+    }
+
+    @Then("book information must match the database for {string}")
+    public void bookInformationMustMatchTheDatabaseFor(String bookName) {
+
+        BrowserUtil.waitFor(4);
+
+        // get UI book INFO
+        String actualBookName = bookPage.bookName.getAttribute("value");
+        String actualAuthor = bookPage.author.getAttribute("value");
+        String actualISBN = bookPage.isbn.getAttribute("value");
+        String actualYear = bookPage.year.getAttribute("value");
+        String actualDesc = bookPage.description.getAttribute("value");
+
+        System.out.println("actualAuthor = " + actualAuthor);
+
+        // get DB book INFO
+        String query="select name,isbn,year,author,description from books\n" +
+                "where name='"+bookName+"'";
+
+        DB_Util.runQuery(query);
+
+        Map<String, String> dbData = DB_Util.getRowMap(1);
+
+        System.out.println("dbData = " + dbData);
+
+        String expectedBookName = dbData.get("name");
+        String expectedAuthor = dbData.get("author");
+        String expectedISBN = dbData.get("isbn");
+        String expectedYear = dbData.get("year");
+        String expectedDesc = dbData.get("description");
+
+
+        // Compare
+        Assert.assertEquals(expectedBookName, actualBookName);
+        Assert.assertEquals(expectedAuthor, actualAuthor);
+        Assert.assertEquals(expectedISBN, actualISBN);
+        Assert.assertEquals(expectedYear, actualYear);
+        Assert.assertEquals(expectedDesc, actualDesc);
+
 
     }
 }
