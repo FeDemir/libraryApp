@@ -41,7 +41,7 @@ public class DashboardStepDefs
             // We already have t in previous step
 
     // Connect DB
-        //   DB_Util.createConnection();
+     //   DB_Util.createConnection(); --> Since we create custom hooks no need to do this actions in there
 
     // 2. get all data from DB
 
@@ -71,7 +71,7 @@ public class DashboardStepDefs
 
 
         //Close Conn
-        //DB_Util.destroy();
+       // DB_Util.destroy();    --> Since we create custom hooks no need to do this actions in there
 
 
     }

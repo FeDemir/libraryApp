@@ -62,8 +62,5 @@ public class BooksStepDefs {
         // Assertions
         Assert.assertEquals(expectedCategoryList, actualCategoryList);
 
-
-
-
     }
 }
