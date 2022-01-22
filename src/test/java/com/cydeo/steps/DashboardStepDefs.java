@@ -36,24 +36,24 @@ public class DashboardStepDefs
     @Then("the informations should be same with database")
     public void the_informations_should_be_same_with_database() {
 
-            // get all infromation From UI
+            // 1. get all infromation From UI
             // We already have t in previous step
 
-            // get all data from DB
+            // 2. get all data from DB
 
                 // Connect DB
-        DB_Util.createConnection();
+                DB_Util.createConnection();
 
                 //RUN QUERY
-        DB_Util.runQuery("select count(*) from users");
+                DB_Util.runQuery("select count(*) from users");
 
                 //Get related Data
-        String expectedUserNumbers = DB_Util.getFirstRowFirstColumn();
+                String expectedUserNumbers = DB_Util.getFirstRowFirstColumn();
 
                //Close Conn
-        DB_Util.destroy();
+                DB_Util.destroy();
 
-      // make comparison
+      //3.  make comparison
         Assert.assertEquals(expectedUserNumbers, actualUserNumbers);
 
     }
