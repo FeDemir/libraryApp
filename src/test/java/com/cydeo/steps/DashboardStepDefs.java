@@ -36,11 +36,12 @@ public class DashboardStepDefs
     @Then("the informations should be same with database")
     public void the_informations_should_be_same_with_database() {
 
+
     // 1. get all infromation From UI
             // We already have t in previous step
 
     // Connect DB
-        DB_Util.createConnection();
+        //   DB_Util.createConnection();
 
     // 2. get all data from DB
 
@@ -70,7 +71,7 @@ public class DashboardStepDefs
 
 
         //Close Conn
-        DB_Util.destroy();
+        //DB_Util.destroy();
 
 
     }
