@@ -86,4 +86,26 @@ public class DashboardStepDefs
 
     }
 
+    /*@Then("the informations should be same with database")
+    public void theInformationsShouldBeSameWithDatabase() {
+
+        //confirm number of users
+        DB_Util.runQuery("select count(*) from users");
+        String expectedUserNumbers = DB_Util.getFirstRowFirstColumn();
+        Assert.assertEquals(expectedUserNumbers,actualUserNumbers);
+
+        //confirm number of users
+        DB_Util.runQuery("select count(*) from books");
+        String expectedBookNumbers = DB_Util.getFirstRowFirstColumn();
+        Assert.assertEquals(expectedBookNumbers,actualBookNumbers);
+
+        //confirm number of users
+        DB_Util.runQuery("select count(*) from book_borrow where is_returned=0;");
+        String expectedBorrowedBookNumbers = DB_Util.getFirstRowFirstColumn();
+        Assert.assertEquals(expectedBorrowedBookNumbers,actualBorrowedBookNumbers);
+
+
+        
+        
+    }*/
 }

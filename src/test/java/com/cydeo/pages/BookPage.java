@@ -4,6 +4,7 @@ import com.cydeo.utility.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
@@ -37,14 +38,25 @@ public class BookPage extends BasePage {
     @FindBy(id = "description")
     public WebElement description;
 
+    @FindBy (xpath = "//div[@class='portlet-title']//a")
+    public WebElement addBookBtn;
 
+    @FindBy (xpath = "//button[@type='submit']")
+    public WebElement saveChangesBtn;
 
     public WebElement editBook(String book) {
         String xpath = "//td[3][.='" + book + "']/../td/a";
         return Driver.getDriver().findElement(By.xpath(xpath));
     }
 
+    public String getCategoryName(){
+        Select categories = new Select(Driver.getDriver().findElement(By.id("book_group_id")));
+        return categories.getFirstSelectedOption().getText();
+    }
 
 
-
+    public void setCategory(String category) {
+        Select categories = new Select(Driver.getDriver().findElement(By.id("book_group_id")));
+        categories.selectByVisibleText(category);
+    }
 }

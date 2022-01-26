@@ -59,6 +59,7 @@ public class DB_Util {
             stm = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             rs = stm.executeQuery(sql); // setting the value of ResultSet object
             rsmd = rs.getMetaData() ;  // setting the value of ResultSetMetaData for reuse
+              
         }catch(Exception e){
             System.out.println("ERROR OCCURRED WHILE RUNNING QUERY "+ e.getMessage() );
         }

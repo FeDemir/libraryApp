@@ -40,3 +40,38 @@ Feature: Book Category
     And the user navigates to "Books" page
     When I open book "Clean Code"
     Then book information must match the database for "Clean Code"
+
+
+    #As a librarian
+  @wip @db
+  Scenario: Add BOOK and verify with DB
+    Given the user logged in as "librarian"
+    And the user navigates to "Books" page
+    Then the user adds book
+    And the user fill related book information
+      |Empire|
+      |2020|
+      |978|
+      |GWYNNE|
+      |Historical Fiction|
+      |no description|
+    And the user checks this book is added DB
+
+
+
+
+
+   #UPDATE BOOK and verify with DB
+  @wip @db
+  Scenario: Update book information with db
+    Given the user logged in as "librarian"
+    And the user navigates to "Books" page
+    When I open book "Clean Code"
+    And the user updates "description" as "this book is awesome"
+
+    #Then book information must match the database for "Clean Code"
+    And the book information must be updated on database
+
+
+
+  

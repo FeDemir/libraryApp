@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
                           "rerun:target/rerun.txt", //store failed scenario names into rerun.txt file
                   },
 
-          dryRun = false
+          dryRun = true
           ,tags="@wip"
 
 )
